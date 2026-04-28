@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Página no encontrada | Inled</title>
+    <style>
+        :root {
+            --white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url('https://hosted.inled.es/better.inled.png') no-repeat center center;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            padding: 3.5rem 2rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            text-align: center;
+            color: var(--white);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .logo {
+            width: 140px;
+            height: auto;
+            margin-bottom: 2.5rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+        }
+
+        p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        .progress-wrapper {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 100%;
+            background: var(--white);
+            border-radius: 10px;
+            transition: width 2s linear;
+        }
+
+        .redirect-text {
+            margin-top: 1.2rem;
+            font-size: 0.8rem;
+            opacity: 0.6;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .container {
+            animation: fadeInScale 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="https://hosted.inled.es/INLED_simple-removebg-preview.png" alt="Inled Logo" class="logo">
+
+        <h1>Hemos buscado pero no aparece</h1>
+        <p>La página que buscas ya no existe o se ha movido.</p>
+
+        <div class="progress-wrapper">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
+        <div class="redirect-text">Redirigiendo a inled.es...</div>
+    </div>
+
+    <script>
+        window.onload = () => {
+            const bar = document.getElementById('progressBar');
+            
+            // Forzar reflow para asegurar que la transición ocurra
+            void bar.offsetWidth;
+            
+            // Iniciar vaciado de barra (2 segundos)
+            bar.style.width = '0%';
+
+            // Redirección exacta
+            setTimeout(() => {
+                window.location.href = 'https://inled.es';
+            }, 2000);
+        };
+    </script>
+</body>
+</html>
